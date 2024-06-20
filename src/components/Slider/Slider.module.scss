@@ -1,0 +1,30 @@
+.container {
+    padding: 8px 12px 20px 20px;
+    border-right: solid 0.2px #ccc;
+    width: 18%;
+}
+
+.logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    height: 92px;
+}
+
+.svg {
+
+    object-fit: cover;
+    object-position: center;
+    padding-left: 10px;
+
+    svg {
+        vertical-align: unset;
+    }
+
+    img {
+        font-size: 16px;
+        width: 120px;
+        height: auto;
+    }
+}
