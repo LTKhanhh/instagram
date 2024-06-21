@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faMagnifyingGlass, faFilm } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -25,19 +25,20 @@ function Slider() {
                             <path ></path>
                         </svg> */}
                         <img src={`${process.env.PUBLIC_URL}/Instagram_logo.svg`}></img>
+
                     </div>
                 </a>
             </div>
 
-            <MenuItem icon={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>} text={'Trang chủ'} current></MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>} text={'Tìm kiếm'} current></MenuItem>
-            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/compass-regular.svg`}></img>} text={'Khám phá'} current></MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>} text={'Reels'} current></MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>} text={'Tin nhắn'} current></MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>} text={'Thông báo'} current></MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>} text={'Tạo'} current></MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>} text={'Trang cá nhân'} current></MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>} text={'Xem thêm'} current></MenuItem>
+            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/house-solid.svg`}></img>} text={'Trang chủ'} current></MenuItem>
+            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/magnifying-glass-solid.svg`}></img>} text={'Tìm kiếm'} ></MenuItem>
+            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/compass-regular.svg`}></img>} text={'Khám phá'} ></MenuItem>
+            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/film-solid.svg`}></img>} text={'Reels'} ></MenuItem>
+            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/facebook-messenger.svg`}></img>} text={'Tin nhắn'} ></MenuItem>
+            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/heart-regular.svg`}></img>} text={'Thông báo'} ></MenuItem>
+            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/square-plus-regular.svg`}></img>} text={'Tạo'} ></MenuItem>
+            <MenuItem info icon={<img src={`https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg/800px-Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg`}></img>} text={'Trang cá nhân'} ></MenuItem>
+            <MenuItem icon={<img src={`${process.env.PUBLIC_URL}/bars-solid.svg`}></img>} text={'Xem thêm'} more></MenuItem>
 
 
         </div >

@@ -2,22 +2,40 @@
     display: flex;
     font-size: 16px;
     align-items: center;
-    padding: 10px 0 10px 10px;
+    padding: 12px 0 12px 10px;
     border-radius: 10px;
+    margin: 5px 0;
 
     &:hover {
         background-color: #f0f0f0;
+        cursor: pointer;
     }
+}
+
+.more {
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
 }
 
 .icon {
     font-size: 24px;
     margin-right: 20px;
+    min-width: 24px;
+    min-height: 24px;
+    max-width: 30px;
+}
+
+.info-icon.icon {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 24px;
+    width: 24px;
 }
 
 .title {
     position: relative;
-    top: 2px;
+    // top: 2px;
     font-size: 16px;
 }
 

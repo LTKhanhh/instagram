@@ -10,11 +10,13 @@ function MenuItem({
     href,
     primary = false,
     current = false,
+    info = false,
+    more = false,
     ...passprop
 }) {
     return (
-        <div className={cx('container')}>
-            <span className={cx('icon')}>{icon}</span>
+        <div className={cx('container', more && 'more')} >
+            <span className={cx('icon', info && 'info-icon')}>{icon}</span>
             <span className={cx('title', current && 'current')}>{text}</span>
         </div>
     );
