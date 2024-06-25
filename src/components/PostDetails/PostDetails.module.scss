@@ -1,0 +1,19 @@
+.container {
+    max-height: 94vh;
+    min-height: 50vh;
+    // width: 100%;
+    border-radius: 5px;
+}
+
+.content {
+    max-width: 60%;
+    width: 60%;
+    // height: 100%;
+    overflow: hidden;
+}
+
+.info {
+    // display: flex;
+    // flex: 1;
+    width: 40%;
+}

@@ -7,7 +7,7 @@ import styles from './PostItem.module.scss'
 
 const cx = classNames.bind(styles)
 
-function Pfooter({ handleSubmit }) {
+function Pfooter({ handleSubmit, open, details = false }) {
     const [text, setText] = useState('');
     const isTextareaDisabled = text.trim().length !== 0;
     const onSubmit = (event) => {
@@ -24,9 +24,10 @@ function Pfooter({ handleSubmit }) {
                 <div className={cx('info-user', 'font-bold', 'mr-2')}>ltk_cmbny</div>
                 <div className={cx('status')}>alo 1234</div>
             </div>
-            <div className={cx('view-cmt')}>
+            {!details && <div className={cx('view-cmt')} onClick={open}>
                 <span style={{ color: '#999', fontSize: '14px' }}>Xem tất cả 1000 bình luận</span>
-            </div>
+            </div>}
+
 
             <form className={cx('cmt-container', 'flex')} onSubmit={onSubmit}>
                 <textarea
