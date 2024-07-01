@@ -1,35 +1,27 @@
-.container {
-    // width: 100%;
-    // padding-right: 15px;
-    // padding-left: 15px;
-    // margin-right: auto;
-    // margin-left: auto;
-    // min-height: 100vh;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    min-height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+// .container {
+//     // background-color: red;
+//     // height: 100vh;
+//     // height: 100%;
+// }
+
+.theme {
+    height: 100%;
+
+    img {
+        height: 100%;
+    }
 }
 
-.register {
-    width: 340px;
-}
-
-.register-form {
+.login-form {
     border: 1px solid #ccc;
-    padding: 40px 32px 10px 32px;
+    padding: 40px 26px 10px 26px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
-
 }
 
 .logo {
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 
     img {
         width: 100%;
@@ -37,33 +29,51 @@
     }
 }
 
-.login-fb {
-    margin-top: 10px;
-    padding: 6px;
-    border-radius: 10px;
-    background-color: rgb(0, 149, 246);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
+.account-name,
+.password {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
 
-    span {
+    input {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    .btn {
+        width: 100%;
+        padding: 8px 10px;
+        background-color: rgb(0, 149, 246);
         font-size: 14px;
         font-weight: 700;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .disabled {
+        opacity: 0.7;
+        cursor: default;
+    }
+
+    .active {
+        &:hover {
+            background-color: #1877f2;
+        }
     }
 }
 
 .separate {
-    margin-bottom: 20px;
-
-    margin-top: 10px;
-
     span {
         position: relative;
         /* Để làm cơ sở cho pseudo-element */
         display: inline-block;
-        font-size: 12px;
+        font-size: 14px;
         color: #777;
         font-weight: 600;
 
@@ -99,48 +109,21 @@
     }
 }
 
-.user-name,
-.password,
-.account-name,
-.full-name {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    overflow: hidden;
-
-    input {
-        padding: 10px;
-        font-size: 12px;
-    }
+.login-fb {
+    color: #385185;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
 }
 
-.register-btn {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 20px;
-
-    .btn {
-        width: 100%;
-        padding: 8px 10px;
-        background-color: rgb(0, 149, 246);
-        font-size: 14px;
-        font-weight: 700;
-        color: white;
-        border-radius: 10px;
-    }
-
-    .disabled {
-        opacity: 0.7;
-        cursor: default;
-    }
-
-    .active {
-        &:hover {
-            background-color: #1877f2;
-        }
-    }
+.forgot-psw {
+    font-size: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 
-.to-login {
+.to-register {
     margin-top: 10px;
     border: 1px solid #ccc;
     padding: 20px 26px 20px 26px;

@@ -6,11 +6,11 @@ const cx = classNames.bind(styles)
 
 function RegisterLayout({ children }) {
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('container')}>
-                <div className={cx('content')}>{children}</div>
-            </div>
+
+        <div className={cx('container', 'sm:w-5/6', 'lg:w-3/6')}>
+            {children}
         </div>
+
     );
 }
 
