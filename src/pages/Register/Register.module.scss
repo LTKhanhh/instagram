@@ -106,10 +106,23 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     overflow: hidden;
+    position: relative;
 
     input {
         padding: 10px;
         font-size: 12px;
+        padding-right: 35px;
+    }
+
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }
 

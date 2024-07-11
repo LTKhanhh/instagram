@@ -1,20 +1,72 @@
 import styles from './Register.module.scss';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
+import requestApi from '~/fetch';
 import classNames from "classnames/bind";
 
 
 const cx = classNames.bind(styles)
 const USER_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const FN_REGEX = /.*[a-zA-Z].*/;
+const UN_REGEX = /^(?=.*[a-zA-Z])[^ ]*$/;
 
 function Register() {
+    const navigate = useNavigate();
     const [userName, setUserName] = useState('');
     const [passWord, setPassWord] = useState('');
     const [accountName, setAccountName] = useState('');
-    const [fullName, setFullName] = useState('')
+    const [fullName, setFullName] = useState('');
+
+    const [validAccount, setValidAccount] = useState();
+    const [validPassWord, setValidPassWord] = useState();
+    const [validUserName, setValidUserName] = useState();
+    const [validFullName, setValidFullName] = useState();
+    const [errMsg, setErrMsg] = useState('')
+
+    useEffect(() => {
+        setValidAccount(USER_REGEX.test(accountName))
+    },
+        [accountName])
+    useEffect(() => {
+        setValidPassWord(passWord.length >= 6)
+    },
+        [passWord])
+
+    useEffect(() => {
+        setValidFullName(FN_REGEX.test(fullName))
+    },
+        [fullName])
+
+    useEffect(() => {
+        setValidUserName(UN_REGEX.test(userName))
+    },
+        [userName])
+
+
     const handleRegister = (e) => {
         e.preventDefault();
+        let inputobj = {
+            "email": accountName,
+            "password": passWord,
+            "userName": userName
+        }
+
+        requestApi('auth/register', 'post', inputobj)
+            .then(res => {
+                // console.log(res)
+                setAccountName('')
+                setFullName('')
+                setPassWord('')
+                setUserName('')
+                navigate('/login')
+            })
+            .catch(err => {
+                err.response.data && setErrMsg(err.response.data.message)
+                console.log(err)
+            })
     }
     return (
         <div className={cx('container')}>
@@ -38,16 +90,61 @@ function Register() {
                     <form onSubmit={handleRegister} className={cx('info', 'w-full')}>
                         <div className={cx('account-name', 'mb-4')}>
                             <input value={accountName} onChange={e => setAccountName(e.target.value)} placeholder="Số điện thoại hoặc email" className={cx('w-full')}></input>
+                            {
+                                accountName.length !== 0 ?
+                                    <div className={cx('icon')}>
+                                        {validAccount ? <FontAwesomeIcon className=' w-10 h-8' icon={faCheckCircle}></FontAwesomeIcon> :
+                                            <FontAwesomeIcon className='text-red-600 w-10 h-8' icon={faCircleXmark}></FontAwesomeIcon>
+                                        }
+                                    </div>
+                                    :
+                                    <div></div>
+                            }
+
+
                         </div>
                         <div className={cx('full-name', 'mb-4')}>
                             <input value={fullName} onChange={e => setFullName(e.target.value)} placeholder="Tên đầy đủ" className={cx('w-full')}></input>
+                            {
+                                fullName.length !== 0 ?
+                                    <div className={cx('icon')}>
+                                        {validFullName ? <FontAwesomeIcon className=' w-10 h-8' icon={faCheckCircle}></FontAwesomeIcon> :
+                                            <FontAwesomeIcon className='text-red-600 w-10 h-8' icon={faCircleXmark}></FontAwesomeIcon>
+                                        }
+                                    </div>
+                                    :
+                                    <div></div>
+                            }
+
                         </div>
                         <div className={cx('user-name', 'mb-4')}>
                             <input value={userName} onChange={e => setUserName(e.target.value)} placeholder="Tên người dùng" className={cx('w-full')}></input>
+                            {
+                                userName.length !== 0 ?
+                                    <div className={cx('icon')}>
+                                        {validUserName === true ? <FontAwesomeIcon className=' w-10 h-8' icon={faCheckCircle}></FontAwesomeIcon> :
+                                            <FontAwesomeIcon className='text-red-600 w-10 h-8' icon={faCircleXmark}></FontAwesomeIcon>
+                                        }
+                                    </div>
+                                    :
+                                    <div></div>
+                            }
+
                         </div>
 
                         <div className={cx('password')}>
                             <input type="password" value={passWord} onChange={e => setPassWord(e.target.value)} placeholder="Mật khẩu" className={cx('w-full')}></input>
+                            {
+                                passWord.length !== 0 ?
+                                    <div className={cx('icon')}>
+                                        {validPassWord ? <FontAwesomeIcon className=' w-10 h-8' icon={faCheckCircle}></FontAwesomeIcon> :
+                                            <FontAwesomeIcon className='text-red-600 w-10 h-8' icon={faCircleXmark}></FontAwesomeIcon>
+                                        }
+                                    </div>
+                                    :
+                                    <div></div>
+                            }
+
                         </div>
 
 
@@ -70,6 +167,12 @@ function Register() {
                                 .
                             </span>
                         </div>
+
+                        {errMsg.length == 0 ? <div></div> :
+                            <div className="text-center  mt-10">
+                                <span className="text-red-600 text-xl">{errMsg}</span>
+                            </div>
+                        }
 
                         <div type='submit' className={cx("register-btn")}>
                             <button className={userName && passWord && fullName && accountName ? cx('btn', 'active') : cx('btn', 'disabled')}>

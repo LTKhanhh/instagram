@@ -218,3 +218,43 @@
         object-position: center;
     }
 }
+
+.up-form {
+    // max-height: 400px;
+    // width: auto;
+    width: auto;
+    // /* Chiều rộng của container */
+    // max-width: 400px;
+    // /* Chiều rộng tối đa của container */
+    height: 400px;
+    margin-top: 10px;
+
+    /* Chiều cao tự động dựa trên chiều rộng */
+    .item {
+        width: auto;
+        /* Chiều rộng tự động dựa trên chiều cao */
+        height: 400px;
+        /* Chiều cao của container */
+        display: flex;
+        /* Sử dụng flexbox để căn giữa ảnh */
+        justify-content: center;
+        /* Căn giữa theo chiều ngang */
+        align-items: center;
+        /* Căn giữa theo chiều dọc */
+
+
+        img {
+            height: 100%;
+            /* Chiều cao của ảnh bằng với chiều cao của container */
+            width: auto;
+            /* Chiều rộng tự động để giữ nguyên tỉ lệ */
+            object-fit: contain;
+            /* Giữ nguyên tỉ lệ mà không bị cắt mất phần nào của ảnh */
+        }
+    }
+
+    .arrow {
+        color: rgba(70, 60, 60, 0.534);
+    }
+
+}

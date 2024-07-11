@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from '~/components/GlobalStyles';
+import { Toaster } from 'react-hot-toast';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 root.render(
   <React.StrictMode>
     <GlobalStyles>
       <App />
+      <Toaster position='top-right' />
     </GlobalStyles>
 
   </React.StrictMode>

@@ -1,17 +1,37 @@
 import classNames from "classnames/bind";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import style from "./Login.module.scss";
-import { Link } from "react-router-dom";
+import requestApi from "~/fetch";
 
 const cx = classNames.bind(style)
+const USER_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 function Login() {
+    const navigate = useNavigate()
     const [accountName, setAccountName] = useState('');
     const [passWord, setPassWord] = useState('');
-
+    const [errMsg, setErrMsg] = useState('')
     const handleLogin = (e) => {
         e.preventDefault();
+        let inputobj = {
+            "account": accountName,
+            "password": passWord
+        }
+
+        requestApi('auth/login', 'post', inputobj)
+            .then(res => {
+                console.log(res)
+                localStorage.setItem("accessToken", res.data.data.accessToken)
+                localStorage.setItem("refreshToken", res.data.data.refreshToken)
+
+                navigate('/')
+            })
+            .catch(err => {
+                setErrMsg(err.response.data.message)
+                console.log(err)
+            })
     }
     return (
         <div className={cx('container', 'sm:h-5/6 sm:mt-16', 'lg:h-4/6 lg:mt-44')}>
@@ -45,6 +65,12 @@ function Login() {
                         <div className={cx('separate')}>
                             <span>HOẶC</span>
                         </div>
+
+                        {errMsg.length == 0 ? <div></div> :
+                            <div className="text-center  mt-10">
+                                <span className="text-red-600 text-xl">Tên đăng nhập hoặc mật khẩu không đúng</span>
+                            </div>
+                        }
 
                         <div className={cx('login-fb', 'mt-10')}>
                             <span>Đăng nhập bằng Facebook</span>

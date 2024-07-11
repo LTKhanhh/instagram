@@ -12,10 +12,16 @@ function MenuItem({
     current = false,
     info = false,
     more = false,
+    openCreate,
     ...passprop
 }) {
+    const handleClick = () => {
+        if (text == "Tạo") {
+            openCreate()
+        }
+    }
     return (
-        <div className={cx('container', more && 'more')} >
+        <div className={cx('container', more && 'more')} onClick={handleClick} >
             <span className={cx('icon', info && 'info-icon')}>{icon}</span>
             <span className={cx('title', current && 'current')}>{text}</span>
         </div>

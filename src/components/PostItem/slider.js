@@ -11,11 +11,11 @@ import styles from './PostItem.module.scss'
 const cx = classNames.bind(styles)
 
 
-function Slider() {
-    const list = [<img src={`${process.env.PUBLIC_URL}/we.jpg`}></img>,
-    <img src={`${process.env.PUBLIC_URL}/we.jpg`}></img>,
-    <img src={`${process.env.PUBLIC_URL}/we.jpg`}></img>,
-    <img src={`${process.env.PUBLIC_URL}/we.jpg`}></img>,]
+function Slider({ list = [`${process.env.PUBLIC_URL}/we.jpg`,
+`${process.env.PUBLIC_URL}/we.jpg`,
+`${process.env.PUBLIC_URL}/we.jpg`,
+`${process.env.PUBLIC_URL}/we.jpg`,], style, className }) {
+
 
     return (<div className={cx("wrapper")}>
 
@@ -31,7 +31,7 @@ function Slider() {
             customLeftArrow={<CustomLeft />}
             customRightArrow={<CustomRight />}
             customDot={<CustomDot />}
-            className={cx("carousel")}
+            className={cx("carousel", className)}
         >
             {/* <img src={`${process.env.PUBLIC_URL}/we.jpg`}></img>
             <img src={`${process.env.PUBLIC_URL}/we.jpg`}></img>
@@ -39,7 +39,7 @@ function Slider() {
             <img src={`${process.env.PUBLIC_URL}/we.jpg`}></img> */}
             {list.map((item, index) => (
                 <div className={cx('item')} key={index}>
-                    {item}
+                    <img src={item}></img>
                 </div>
             ))}
         </Carousel >

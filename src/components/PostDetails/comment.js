@@ -16,7 +16,7 @@ function Comment({ name, comment, day, like, canReply, repList }) {
             <div className={cx('details', 'flex', 'flex-col')}>
                 <div className={cx('content')}>
                     <span className={cx('name')}>ltk_cmbny</span>
-                    <span className={cx('comment')}>tình bể bình</span>
+                    <span className={cx('comment')}>tình </span>
                 </div>
                 <div className={cx('actions', 'flex')}>
                     <span className={cx('day')}> 3 ngày</span>
