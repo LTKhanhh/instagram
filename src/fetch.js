@@ -11,6 +11,7 @@ export default function requestApi(endpoint, method, body, responseType = 'json'
         'Access-Control-Allow-Origin': '*'
     }
     if (body instanceof FormData) {
+        console.log(1);
         headers['Content-Type'] = 'multipart/form-data';
     }
 

@@ -23,9 +23,9 @@ export const responsive = {
         items: 1,
     },
 };
-function Content() {
+function Content({ images }) {
     return (
-        <Slider />
+        <Slider list={images} />
     );
 }
 

@@ -33,8 +33,9 @@ const cx = classNames.bind(styles)
 //     return <Picker onSelect={onSelect} />;
 // };
 
-function UploadForm() {
+function UploadForm({ close }) {
     const [selectedFile, setSelectedFile] = useState([])
+    const [sendFile, setSendFile] = useState([])
     const [last, setLast] = useState(false)
     const showToast = useShowToast();
     const fileInputRef = useRef(null);
@@ -45,6 +46,8 @@ function UploadForm() {
         fileInputRef.current.click(); // Khi bấm nút, mở hộp thoại chọn file
     };
     const handleFileChange = (e) => {
+        const files = Array.from(e.target.files);
+        setSendFile(files);
         const file = e.target.files[0];
         const reader = new FileReader();
 
@@ -52,10 +55,7 @@ function UploadForm() {
             reader.onloadend = () => {
                 setSelectedFile([...selectedFile, reader.result]);
             };
-
-
             reader.readAsDataURL(file);
-
         }
         else {
             showToast("Error", "Please select an image file", "error");
@@ -67,11 +67,15 @@ function UploadForm() {
     const handleSubmit = (e) => {
         // console.log(1)
         // e.preventDefault();
-        console.log(selectedFile)
+        // console.log(selectedFile)
 
         let inputobj = new FormData();
         inputobj.append("title", text);
-        inputobj.append("image", selectedFile);
+        for (let i = 0; i < sendFile.length; i++) {
+            inputobj.append('image', sendFile[i]);
+        }
+        // inputobj.append("image", selectedFile); nhưng mà thử lấy ra xem đc k
+
 
 
         requestApi('post', 'post', inputobj)
@@ -81,6 +85,10 @@ function UploadForm() {
             .catch(err => {
                 console.log(err)
             })
+        // selectedFile([])
+        setSendFile([])
+        setText("")
+        close()
     }
 
     const backHandle = () => {

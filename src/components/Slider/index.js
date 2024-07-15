@@ -44,7 +44,7 @@ function Slider() {
                             <FontAwesomeIcon className="size-10" style={{ color: '#fff' }} icon={faXmark} />
                         </button>
                         <div className="flex items-center justify-center h-screen">
-                            <UploadForm />
+                            <UploadForm close={onClose} />
                             {/* <Content /> */}
                         </div>
                     </ModalBody>

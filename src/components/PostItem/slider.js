@@ -11,10 +11,7 @@ import styles from './PostItem.module.scss'
 const cx = classNames.bind(styles)
 
 
-function Slider({ list = [`${process.env.PUBLIC_URL}/we.jpg`,
-`${process.env.PUBLIC_URL}/we.jpg`,
-`${process.env.PUBLIC_URL}/we.jpg`,
-`${process.env.PUBLIC_URL}/we.jpg`,], style, className }) {
+function Slider({ list = [], style, className }) {
 
 
     return (<div className={cx("wrapper")}>
